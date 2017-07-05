@@ -50,6 +50,7 @@ public class UserFunction extends ActionSupport {
 		query.setString("password", user.getPassword());
 		UserInfo info = (UserInfo) query.uniqueResult();
 		if (info != null) {
+			getAllBooks();
 			return SUCCESS;
 		} else {
 			addFieldError("loginError", "用户名或密码错误");
@@ -57,11 +58,28 @@ public class UserFunction extends ActionSupport {
 		}
 	}
 
+	/**
+	 * 获取所有书籍方法
+	 * 
+	 * @return
+	 */
 	public List<BookInfo> getAllBooks() {
 		String hql = "from BookInfo";
 		Session session = HibernateSessionFactory.getSession();
 		Query query = session.createQuery(hql);
 		bookLists = query.list();
+		return bookLists;
+	}
+
+	/**
+	 * 分页查询
+	 * 
+	 * @param index
+	 * @param maxResult
+	 * @return
+	 */
+	public List<BookInfo> getBooksByPage(int index, int maxResult) {
+
 		return bookLists;
 	}
 }

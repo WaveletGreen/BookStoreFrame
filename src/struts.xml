@@ -5,7 +5,7 @@
 	<package name="fancyears" namespace="/" extends="struts-default">
 		<action name="*_*" class="com.BookStore.action.{1}" method="{2}">
 			<result name="success">
-				/jsp/{2}Sucess.jsp
+				/jsp/{2}Success.jsp
 			</result>
 			<result name="input">
 				/jsp/{2}Input.jsp
