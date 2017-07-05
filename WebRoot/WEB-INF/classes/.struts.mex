@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="fancyears" location="78,43" size="213,466">
+    <action name="*_*" location="15,32" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="{2}Sucess.jsp&#xA;&#x9;&#x9;&#x9;" />
+      </result>
+    </action>
+  </package>
+  <webResource name="{2}Sucess.jsp&#xA;&#x9;&#x9;&#x9;" path="&#xA;&#x9;&#x9;&#x9;&#x9;/jsp/{2}Sucess.jsp&#xA;&#x9;&#x9;&#x9;" location="387,60" size="150,55" />
+</Struts2Diagram>
+
