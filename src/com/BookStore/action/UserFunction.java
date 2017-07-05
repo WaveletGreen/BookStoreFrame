@@ -16,6 +16,15 @@ public class UserFunction extends ActionSupport {
 
 	private LoginUser user;
 	private List<BookInfo> bookLists;
+	private String errorMsg;
+
+	public String getErrorMsg() {
+		return errorMsg;
+	}
+
+	public void setErrorMsg(String errorMsg) {
+		this.errorMsg = errorMsg;
+	}
 
 	public List<BookInfo> getBookLists() {
 		return bookLists;
@@ -35,7 +44,6 @@ public class UserFunction extends ActionSupport {
 
 	public String login() {
 		String hql = "from UserInfo where userName=:userName and password=:password";
-
 		Session session = HibernateSessionFactory.getSession();
 		Query query = session.createQuery(hql);
 		query.setString("userName", user.getUserName());
@@ -44,7 +52,8 @@ public class UserFunction extends ActionSupport {
 		if (info != null) {
 			return SUCCESS;
 		} else {
-			return ERROR;
+			addFieldError("loginError", "用户名或密码错误");
+			return INPUT;
 		}
 	}
 

@@ -7,6 +7,9 @@
 			<result name="success">
 				/jsp/{2}Sucess.jsp
 			</result>
+			<result name="input">
+				/jsp/{2}Input.jsp
+			</result>
 		</action>
 	</package>
 </struts>    

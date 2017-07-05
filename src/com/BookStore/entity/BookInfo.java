@@ -1,5 +1,8 @@
 package com.BookStore.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * BookInfo entity. @author MyEclipse Persistence Tools
  */
@@ -13,6 +16,7 @@ public class BookInfo implements java.io.Serializable {
 	private Long bookPrice;
 	private Long bookStock;
 	private String bookPhoto;
+	private Set orderDetails = new HashSet(0);
 
 	// Constructors
 
@@ -30,12 +34,13 @@ public class BookInfo implements java.io.Serializable {
 
 	/** full constructor */
 	public BookInfo(Long bookId, String bookName, Long bookPrice,
-			Long bookStock, String bookPhoto) {
+			Long bookStock, String bookPhoto, Set orderDetails) {
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
 		this.bookStock = bookStock;
 		this.bookPhoto = bookPhoto;
+		this.orderDetails = orderDetails;
 	}
 
 	// Property accessors
@@ -78,6 +83,14 @@ public class BookInfo implements java.io.Serializable {
 
 	public void setBookPhoto(String bookPhoto) {
 		this.bookPhoto = bookPhoto;
+	}
+
+	public Set getOrderDetails() {
+		return this.orderDetails;
+	}
+
+	public void setOrderDetails(Set orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 }

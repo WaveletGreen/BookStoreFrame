@@ -22,5 +22,13 @@
 		<property name="bookPhoto" type="java.lang.String">
 			<column name="BOOK_PHOTO" length="100" />
 		</property>
+		<set name="orderDetails" inverse="true">
+			<key>
+				<column name="BOOK_ID" precision="22" scale="0" not-null="true">
+					<comment>书籍名称</comment>
+				</column>
+			</key>
+			<one-to-many class="com.BookStore.entity.OrderDetail" />
+		</set>
 	</class>
 </hibernate-mapping>
