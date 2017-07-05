@@ -52,7 +52,7 @@
 					<li><a href="servlet/logoutServlet">注销</a></li>
 				</ul>
 			</div>
-			<form method="get" name="search" action="servlet/doBookListServlet">
+			<form method="get" name="search" action="UserFunction_getBooksByPage">
 				搜索：<input class="input-text" type="text" name="bookName" value='' /><input
 					class="input-btn" type="submit" name="submit" value='' />
 			</form>
@@ -87,13 +87,6 @@
 							</tr>
 						</s:iterator>
 					</s:else>
-					<!-- 					<c:if test="${empty requestScope.bookList}"> -->
-					<!-- 						<tr> -->
-					<!-- 							<td colspan="5">没有您要查找的数据</td> -->
-					<!-- 						</tr> -->
-					<!-- 					</c:if> -->
-
-					<!-- 					<s:else> -->
 					<s:iterator value="bookLists" var="book">
 						<tr>
 							<td class="title"><input type="checkbox" name="book_id"
@@ -108,22 +101,21 @@
 								src='<s:property value="bookPhoto" />' /></td>
 						</tr>
 					</s:iterator>
-					<!-- 					</s:else> -->
 
 				</table>
-				<!-- 				<div class="page-spliter"> -->
-				<!-- 					<a href="servlet/doBookListServlet?pageIndex=1">首页</a> -->
-				<!-- 					<c:if test="${pageIndex!=1}"> -->
-				<!-- 						<a href="servlet/doBookListServlet?pageIndex=${prePageIndex }">上一页</a> -->
-				<!-- 					</c:if> -->
-				<!-- 					<c:if test="${pageIndex!= totalPages }"> -->
-				<!-- 						<a href="servlet/doBookListServlet?pageIndex=${nextPageIndex }">下一页</a> -->
-				<!-- 					</c:if> -->
-				<!-- 					<a href="servlet/doBookListServlet?pageIndex=${totalPages }">尾页</a>&nbsp;&nbsp;&nbsp; -->
-				<!-- 					<c:if test="${totalPages!=0}">第${pageIndex}页 -->
-				<!-- 					/</c:if> -->
-				<!-- 					${totalPages}页 -->
-				<!-- 				</div> -->
+				<div class="page-spliter">
+					<a href="servlet/doBookListServlet?pageIndex=1">首页</a>
+					<c:if test="${pageIndex!=1}">
+						<a href="servlet/doBookListServlet?pageIndex=${prePageIndex }">上一页</a>
+					</c:if>
+					<c:if test="${pageIndex!= totalPages }">
+						<a href="servlet/doBookListServlet?pageIndex=${nextPageIndex }">下一页</a>
+					</c:if>
+					<a href="servlet/doBookListServlet?pageIndex=${totalPages }">尾页</a>&nbsp;&nbsp;&nbsp;
+					<c:if test="${totalPages!=0}">第${pageIndex}页 
+				 					/</c:if>
+					${totalPages}页
+				</div>
 				<div class="button">
 					<input class="input-btn" type="submit" name="submit" value="" />
 				</div>
