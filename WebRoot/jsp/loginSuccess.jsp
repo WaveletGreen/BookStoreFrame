@@ -82,33 +82,25 @@
 							</tr>
 						</s:iterator>
 					</s:else>
-					<s:iterator value="bookLists" var="book">
-						<tr>
-							<td class="title"><input type="checkbox" name="book_id"
-								value='<s:property value="bookId"/>' /></td>
-							<td class="title"><s:property value="bookName" /></td>
-							<td><s:property value="bookPrice" /></td>
-
-							<td><input type="hidden" name="amount" value="1" /> <s:property
-									value="bookStock" /></td>
-							<td class="thumb"><img
-								src='<s:property value="bookPhoto" />' /></td>
-						</tr>
-					</s:iterator>
-
 				</table>
 				<div class="page-spliter">
-					<a href="servlet/doBookListServlet?pageIndex=1">首页</a>
-					<c:if test="${pageIndex!=1}">
-						<a href="servlet/doBookListServlet?pageIndex=${prePageIndex }">上一页</a>
-					</c:if>
-					<c:if test="${pageIndex!= totalPages }">
-						<a href="servlet/doBookListServlet?pageIndex=${nextPageIndex }">下一页</a>
-					</c:if>
-					<a href="servlet/doBookListServlet?pageIndex=${totalPages }">尾页</a>&nbsp;&nbsp;&nbsp;
-					<c:if test="${totalPages!=0}">第${pageIndex}页 
-				 					/</c:if>
-					${totalPages}页
+					<a href="fancUserFunction_search.action?page.pageIndex=1">首页</a>
+					<s:if test="page.prePageIndex!=page.pageIndex">
+						<a
+							href='fancUserFunction_search.action?page.pageIndex=<s:property value="page.prePageIndex"/>'>上一页</a>
+					</s:if>
+					<s:if test="page.nextPageIndex!=page.pageIndex">
+						<a
+							href='fancUserFunction_search.action?page.pageIndex=<s:property value="page.nextPageIndex"/>'>下一页</a>
+					</s:if>
+					<a
+						href='fancUserFunction_search.action?page.pageIndex=<s:property value="page.totalPages"/>'>尾页</a>&nbsp;&nbsp;&nbsp;
+					第
+					<s:property value="page.pageIndex" />
+					页 /
+					<s:property value="page.totalPages" />
+					页
+
 				</div>
 				<div class="button">
 					<input class="input-btn" type="submit" name="submit" value="" />

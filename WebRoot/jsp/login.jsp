@@ -40,7 +40,7 @@
 	</div>
 	<div id="login">
 		<h2>用户登陆</h2>
-		<form method="post" action="fancUserFunction_regist.action"
+		<form method="post" action="fancUserFunction_login.action"
 			id="loginForm">
 			<dl>
 				<dt>用户名：</dt>

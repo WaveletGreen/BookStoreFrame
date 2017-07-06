@@ -36,7 +36,7 @@ public class Page {
 
 	public void setPrePageIndex(int prePageIndex) {
 		this.prePageIndex = prePageIndex - 1;
-		if (this.prePageIndex < pageIndex) {
+		if (this.prePageIndex <= 0) {
 			this.prePageIndex = pageIndex;
 		}
 	}

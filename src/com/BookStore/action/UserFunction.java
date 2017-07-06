@@ -72,7 +72,7 @@ public class UserFunction extends ActionSupport {
 		query.setString("password", user.getPassword());
 		UserInfo info = (UserInfo) query.uniqueResult();
 		if (info != null) {
-			getAllBooks();
+			getBooksByPage(null, 1, 5);
 			return SUCCESS;
 		} else {
 			addFieldError("loginError", "用户名或密码错误");
@@ -103,44 +103,71 @@ public class UserFunction extends ActionSupport {
 		return "toIndex";
 	}
 
+	public String search() {
+		getBooksByPage(null, page.getPageIndex(), 5);
+		return "toIndex";
+	}
+
 	/**
 	 * 分页查询，包含模糊查询
 	 * 
 	 * @param index
+	 *            查询其实页数
 	 * @param maxResult
+	 *            每页显示最大记录数
 	 * @return
 	 */
-	public List<BookInfo> getBooksByPage(
-	// String bookName, int index,int maxResult
-	) {
+	public List<BookInfo> getBooksByPage(String bookName, int index, int maxResult) {
 		boolean controller = false;
+		int listSize = 0;
 		StringBuilder hql = new StringBuilder();
 		hql.append("from BookInfo ");
-		// if (bookName != null) {
-		// hql.append("where bookName like :bookName ");
-		// controller = true;
-		// }
-
+		if (bookName != null) {
+			hql.append("where bookName like :bookName ");
+			controller = true;
+		}
 		Session session = HibernateSessionFactory.getSession();
 		Query query = session.createQuery(hql.toString());
-		// if (controller) {
-		// query.setString("bookName", "%" + bookName + "%");
-		// }
+		if (controller) {
+			query.setString("bookName", "%" + bookName + "%");
+		}
 		bookLists = query.list();
-		if (!bookLists.isEmpty()) {
+		if (this.page == null) {
+			this.page = new Page();
+		}
+		if (bookLists.isEmpty()) {
 			page.setPageIndex(1);
 			page.setTotalPages(1);
 			page.setNextPageIndex(1);
 			page.setPrePageIndex(1);
 		} else {
-			page.setTotalPages(bookLists.size() / 5);
-			page.setPageIndex(1);
-			page.setNextPageIndex(1);
-			page.setPageIndex(1);
+
+			if (maxResult < 1) {
+				maxResult = 1;
+			}
+			if (bookLists.size() % maxResult != 0) {
+				listSize = bookLists.size() / maxResult + 1;
+			} else {
+				listSize = bookLists.size() / maxResult;
+			}
+			if (listSize < 1) {
+				listSize = 1;
+				page.setTotalPages(listSize);
+			} else {
+				page.setTotalPages(listSize);
+			}
+			if (index < 1) {
+				index = 1;
+			} else if (index > listSize) {
+				index = listSize;
+			}
+			page.setPrePageIndex(index);
+			page.setPageIndex(index);
+			page.setNextPageIndex(index);
 		}
 		// 设置查询范围
-		query.setFirstResult(1);
-		query.setMaxResults(5);
+		query.setFirstResult((index - 1) * maxResult);
+		query.setMaxResults(maxResult);
 		bookLists = query.list();
 		return bookLists;
 	}
