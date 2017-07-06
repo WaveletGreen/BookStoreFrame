@@ -4,8 +4,7 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -26,10 +25,6 @@
 	//String loginUser ="当前用户未登录";
 	String loginUser = "<a href='/bookStore/jsp/login.jsp'>点击登陆</a>";
 	//暂时注释
-	// 	if (session.getAttribute("loginedUser") == null
-	// 			&& session.getAttribute("tourer") == null) {
-	// 		response.sendRedirect("UserFunction_getAllBooks.action");
-	// 	}
 %>
 </head>
 <body>
@@ -91,8 +86,7 @@
 						<tr>
 							<td class="title"><input type="checkbox" name="book_id"
 								value='<s:property value="bookId"/>' /></td>
-							<td class="title"><s:property value="bookName" />
-							</td>
+							<td class="title"><s:property value="bookName" /></td>
 							<td><s:property value="bookPrice" /></td>
 
 							<td><input type="hidden" name="amount" value="1" /> <s:property

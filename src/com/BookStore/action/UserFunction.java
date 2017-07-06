@@ -19,9 +19,18 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserFunction extends ActionSupport {
 
 	private LoginUser user;
+	private UserInfo regUser;
 	private List<BookInfo> bookLists;
 	private String errorMsg;
 	private Page page;
+
+	public UserInfo getRegUser() {
+		return regUser;
+	}
+
+	public void setRegUser(UserInfo regUser) {
+		this.regUser = regUser;
+	}
 
 	public Page getPage() {
 		return page;
@@ -70,25 +79,28 @@ public class UserFunction extends ActionSupport {
 			return INPUT;
 		}
 	}
+
 	public String regist() {
-		Session session=HibernateSessionFactory.getSession();
-		Transaction tx=session.beginTransaction();
-		session.save(user);
+		Session session = HibernateSessionFactory.getSession();
+		Transaction tx = session.beginTransaction();
+		session.save(regUser);
 		tx.commit();
 		session.close();
-		return SUCCESS;
+		// 这里是需要重定向，否则刷新的时候回重复提交注册
+		return "registToIndex";
 	}
+
 	/**
 	 * 获取所有书籍方法
 	 * 
 	 * @return
 	 */
-	public List<BookInfo> getAllBooks() {
+	public String getAllBooks() {
 		String hql = "from BookInfo";
 		Session session = HibernateSessionFactory.getSession();
 		Query query = session.createQuery(hql);
 		bookLists = query.list();
-		return bookLists;
+		return "toIndex";
 	}
 
 	/**
@@ -99,21 +111,21 @@ public class UserFunction extends ActionSupport {
 	 * @return
 	 */
 	public List<BookInfo> getBooksByPage(
-//			String bookName, int index,int maxResult
-			) {
+	// String bookName, int index,int maxResult
+	) {
 		boolean controller = false;
 		StringBuilder hql = new StringBuilder();
 		hql.append("from BookInfo ");
-//		if (bookName != null) {
-//			hql.append("where bookName like :bookName ");
-//			controller = true;
-//		}
+		// if (bookName != null) {
+		// hql.append("where bookName like :bookName ");
+		// controller = true;
+		// }
 
 		Session session = HibernateSessionFactory.getSession();
 		Query query = session.createQuery(hql.toString());
-//		if (controller) {
-//			query.setString("bookName", "%" + bookName + "%");
-//		}
+		// if (controller) {
+		// query.setString("bookName", "%" + bookName + "%");
+		// }
 		bookLists = query.list();
 		if (!bookLists.isEmpty()) {
 			page.setPageIndex(1);

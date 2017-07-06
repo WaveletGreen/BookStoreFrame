@@ -49,7 +49,7 @@
 				<dt>用 户 名：</dt>
 				<dd>
 					<input class="input-text" type="text" value="请输入用户名"
-						name="user.userName" id="userNameId" onfocus="change();"
+						name="regUser.userName" id="userNameId" onfocus="change();"
 						onblur="checkName();" onfocus="msgDispear('f_userNameMsg')" />
 					<p id="userNameMsg">
 						<font color="red" id="f_userNameMsg"> <%
@@ -63,7 +63,7 @@
 
 				<dt>密 码：</dt>
 				<dd>
-					<input class="input-text" type="password" name="user.password"
+					<input class="input-text" type="password" name="regUser.password"
 						id="passWordId" onblur="checkPassWord();"
 						onfocus="msgDispear('passWordMsg')" />
 					<p id="passWordMsg"></p>
@@ -79,7 +79,7 @@
 
 				<dt>Email地址：</dt>
 				<dd>
-					<input class="input-text" type="text" name="user.email"
+					<input class="input-text" type="text" name="regUser.email"
 						id="emailId" onblur="checkemail();"
 						onfocus="msgDispear('emailMsg')" />
 					<p id="emailMsg"></p>
