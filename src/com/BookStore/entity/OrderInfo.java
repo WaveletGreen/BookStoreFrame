@@ -17,7 +17,7 @@ public class OrderInfo implements java.io.Serializable {
 	private UserInfo userInfo;
 	private Double orderPrice;
 	private String orderGetman;
-	private BigDecimal orderStatus;
+	private Integer orderStatus;
 	private Date orderTime;
 	private Set orderDetails = new HashSet(0);
 
@@ -29,7 +29,7 @@ public class OrderInfo implements java.io.Serializable {
 
 	/** minimal constructor */
 	public OrderInfo(Long orderId, UserInfo userInfo, Double orderPrice,
-			String orderGetman, BigDecimal orderStatus, Date orderTime) {
+			String orderGetman, Integer orderStatus, Date orderTime) {
 		this.orderId = orderId;
 		this.userInfo = userInfo;
 		this.orderPrice = orderPrice;
@@ -40,7 +40,7 @@ public class OrderInfo implements java.io.Serializable {
 
 	/** full constructor */
 	public OrderInfo(Long orderId, UserInfo userInfo, Double orderPrice,
-			String orderGetman, BigDecimal orderStatus, Date orderTime,
+			String orderGetman, Integer orderStatus, Date orderTime,
 			Set orderDetails) {
 		this.orderId = orderId;
 		this.userInfo = userInfo;
@@ -85,11 +85,11 @@ public class OrderInfo implements java.io.Serializable {
 		this.orderGetman = orderGetman;
 	}
 
-	public BigDecimal getOrderStatus() {
+	public Integer getOrderStatus() {
 		return this.orderStatus;
 	}
 
-	public void setOrderStatus(BigDecimal orderStatus) {
+	public void setOrderStatus(Integer orderStatus) {
 		this.orderStatus = orderStatus;
 	}
 

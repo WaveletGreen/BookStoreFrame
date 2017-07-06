@@ -24,7 +24,6 @@ public class UserFunction extends ActionSupport {
 	private String errorMsg;
 	private Page page;
 	private String searchBookName;
-
 	public String getSearchBookName() {
 		return searchBookName;
 	}
@@ -113,8 +112,8 @@ public class UserFunction extends ActionSupport {
 	}
 
 	public String search() {
-		if(page==null){
-			page=new Page();
+		if (page == null) {
+			page = new Page();
 		}
 		getBooksByPage(searchBookName, page.getPageIndex(), 5);
 		return "toIndex";
@@ -173,8 +172,8 @@ public class UserFunction extends ActionSupport {
 			} else if (index > listSize) {
 				index = listSize;
 			}
-			page.setPrePageIndex(index);
 			page.setPageIndex(index);
+			page.setPrePageIndex(index);
 			page.setNextPageIndex(index);
 		}
 		// 设置查询范围

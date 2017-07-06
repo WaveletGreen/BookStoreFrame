@@ -27,7 +27,7 @@ public class AgileDevelopment {
 	public static void main(String[] args) throws IOException {
 		// buildEntityClass("User", "id/int", "userName/String");
 		// String[] impClass={"Serializable"};
-		buildEntityClassFromVoid("Page", null, null, null, "pageIndex/int", "totalPages/int", "prePageIndex/int","nextPageIndex/int");
+		buildEntityClassFromVoid("Cart", null, null, null, "bookName/String", "bookPhoto/String", "number/int","price/double");
 
 	}
 
@@ -121,7 +121,7 @@ public class AgileDevelopment {
 		 * 生成文件路径和包
 		 */
 		// 目标文件夹的上层路径
-		String path = "/com.BookStore/";
+		String path = "com.BookStore/";
 		System.out.println("---------"+path);
 		// 存放实体类的文件夹
 		File file = null;

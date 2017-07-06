@@ -13,7 +13,7 @@ public class BookInfo implements java.io.Serializable {
 
 	private Long bookId;
 	private String bookName;
-	private Long bookPrice;
+	private Double bookPrice;
 	private Long bookStock;
 	private String bookPhoto;
 	private Set orderDetails = new HashSet(0);
@@ -25,7 +25,7 @@ public class BookInfo implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public BookInfo(Long bookId, String bookName, Long bookPrice, Long bookStock) {
+	public BookInfo(Long bookId, String bookName, Double bookPrice, Long bookStock) {
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
@@ -33,7 +33,7 @@ public class BookInfo implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public BookInfo(Long bookId, String bookName, Long bookPrice,
+	public BookInfo(Long bookId, String bookName, Double bookPrice,
 			Long bookStock, String bookPhoto, Set orderDetails) {
 		this.bookId = bookId;
 		this.bookName = bookName;
@@ -61,11 +61,11 @@ public class BookInfo implements java.io.Serializable {
 		this.bookName = bookName;
 	}
 
-	public Long getBookPrice() {
+	public Double getBookPrice() {
 		return this.bookPrice;
 	}
 
-	public void setBookPrice(Long bookPrice) {
+	public void setBookPrice(Double bookPrice) {
 		this.bookPrice = bookPrice;
 	}
 

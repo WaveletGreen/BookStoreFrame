@@ -14,10 +14,11 @@
 				/jsp/loginSucess.jsp
 			</result>
 		</global-results>
-		<action name="def" class="com.BookStore.action.UserFunction"
-			method="getAllBooks">
-			<result>
-				/jsp/loginSuccess.jsp
+		<action name="global*_*" class="com.BookStore.action.{1}"
+			method="{2}">
+			<!-- 重定向删除内容 -->
+			<result name="{2}">
+				/jsp/logout.jsp
 			</result>
 		</action>
 

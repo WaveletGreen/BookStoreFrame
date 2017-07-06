@@ -21,11 +21,21 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<%
-	//String loginUser ="当前用户未登录";
-	String loginUser = "<a href='/bookStore/jsp/login.jsp'>点击登陆</a>";
-	//暂时注释
-%>
+<script type="text/javascript" src="js/jQuery/jquery-3.2.1.slim.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
+
+<script type="text/javascript">
+// 	$(function() {
+// 		$("#toOrderForm").submit(function() {
+// 			alert($("[name='book_id']"));
+// 			$("[name='book_id']").each(function() {
+// 				alert($(this).val());
+// 			});
+// 			return false;
+// 		});
+
+// 	});
+</script>
 </head>
 <body>
 	<div id="header" class="wrap">
@@ -34,8 +44,12 @@
 			<div class="logo_2">网上书城</div>
 		</div>
 		<div id="presentUser" style="margin-left: 70%">
-			<c:if test="${not empty sessionScope.loginedUser}">网上书城欢迎您，${sessionScope.loginedUser.userName}</c:if>
-			<c:if test="${empty sessionScope.loginedUser}"><%=loginUser%></c:if>
+			<s:if test="user!=null">网上书城欢迎您，<s:property
+					value="user.userName" />
+			</s:if>
+			<s:else>
+				<a href='/BookStoreFrame/jsp/login.jsp'>点击登陆</a>
+			</s:else>
 		</div>
 		<div id="navbar">
 			<div class="userMenu">
@@ -44,7 +58,7 @@
 					</li>
 					<li><a href="servlet/orderServlet">我的订单</a></li>
 					<li><a href="servlet/shoppingCartServlet">购物车</a></li>
-					<li><a href="servlet/logoutServlet">注销</a></li>
+					<li><a href="globalGlobal_logout">注销</a></li>
 				</ul>
 			</div>
 			<form method="get" name="search"
@@ -57,7 +71,8 @@
 	</div>
 	<div id="content" class="wrap">
 		<div class="list bookList">
-			<form method="post" name="shoping" action="servlet/shoppingServlet">
+			<form method="get" name="shoping"
+				action="fancOrderFunction_putIntoUserCart" id="toOrderForm">
 				<table>
 					<tr class="title">
 						<th class="checker"></th>
@@ -107,6 +122,7 @@
 				<div class="button">
 					<input class="input-btn" type="submit" name="submit" value="" />
 				</div>
+				<input type="hidden" name="user.userName" value="<s:property value="user.userName"/>" />
 			</form>
 		</div>
 	</div>

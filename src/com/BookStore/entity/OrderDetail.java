@@ -10,11 +10,11 @@ public class OrderDetail implements java.io.Serializable {
 
 	// Fields
 
-	private BigDecimal orderDetailId;
+	private Integer orderDetailId;
 	private BookInfo bookInfo;
 	private OrderInfo orderInfo;
 	private Double bookPrice;
-	private BigDecimal bookAmount;
+	private Integer bookAmount;
 
 	// Constructors
 
@@ -23,8 +23,8 @@ public class OrderDetail implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public OrderDetail(BigDecimal orderDetailId, BookInfo bookInfo,
-			OrderInfo orderInfo, Double bookPrice, BigDecimal bookAmount) {
+	public OrderDetail(Integer orderDetailId, BookInfo bookInfo,
+			OrderInfo orderInfo, Double bookPrice, Integer bookAmount) {
 		this.orderDetailId = orderDetailId;
 		this.bookInfo = bookInfo;
 		this.orderInfo = orderInfo;
@@ -34,11 +34,11 @@ public class OrderDetail implements java.io.Serializable {
 
 	// Property accessors
 
-	public BigDecimal getOrderDetailId() {
+	public Integer getOrderDetailId() {
 		return this.orderDetailId;
 	}
 
-	public void setOrderDetailId(BigDecimal orderDetailId) {
+	public void setOrderDetailId(Integer orderDetailId) {
 		this.orderDetailId = orderDetailId;
 	}
 
@@ -66,11 +66,11 @@ public class OrderDetail implements java.io.Serializable {
 		this.bookPrice = bookPrice;
 	}
 
-	public BigDecimal getBookAmount() {
+	public Integer getBookAmount() {
 		return this.bookAmount;
 	}
 
-	public void setBookAmount(BigDecimal bookAmount) {
+	public void setBookAmount(Integer bookAmount) {
 		this.bookAmount = bookAmount;
 	}
 
