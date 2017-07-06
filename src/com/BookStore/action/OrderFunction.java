@@ -83,6 +83,9 @@ public class OrderFunction extends ActionSupport {
 		if (bookLists == null) {
 			bookLists = new ArrayList<BookInfo>();
 		}
+		if (cart == null) {
+			cart = new ArrayList<Cart>();
+		}
 		// 获取书籍详细信息
 		for (int i = 0; i < book_id.length; i++) {
 			bookLists.add((BookInfo) session.get(BookInfo.class, Long.parseLong(book_id[i])));
@@ -95,8 +98,8 @@ public class OrderFunction extends ActionSupport {
 		orderInfo.setOrderPrice(180.5);
 		orderInfo.setUserInfo(user);
 		session.save(orderInfo);
-		if(orderDetail==null){
-			orderDetail=new ArrayList<OrderDetail>();
+		if (orderDetail == null) {
+			orderDetail = new ArrayList<OrderDetail>();
 		}
 		for (int i = 0; i < bookLists.size(); i++) {
 			OrderDetail detail = new OrderDetail();
@@ -106,6 +109,14 @@ public class OrderFunction extends ActionSupport {
 			detail.setOrderInfo(orderInfo);
 			orderDetail.add(detail);
 			session.save(detail);
+		}
+		for (int i = 0; i < bookLists.size(); i++) {
+			Cart cart = new Cart();
+			cart.setBook_id(bookLists.get(i).getBookId());
+			cart.setBookName(bookLists.get(i).getBookName());
+			cart.setBookPhoto(bookLists.get(i).getBookName());
+			cart.setBookPhoto(bookLists.get(i).getBookPhoto());
+			cart.setNumber(1);
 		}
 		tx.commit();
 		return cart;
