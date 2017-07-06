@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+.errorMessage{
+	color: red;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	width: 100px;
+	top: -11em;
+	left: 20em;
+	height: 16px;
+}
+.errorMessage li{
+	height: 16px;
+}
+.hideError{
+	visibility: hidden;
+}
+.loginRemind{
+	color: red;
+	visibility: visible;
+}
+.removeLoginRemind{
+	visibility: hidden;
+}

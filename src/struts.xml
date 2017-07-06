@@ -3,12 +3,21 @@
 <struts>
 
 	<package name="fancyears" namespace="/" extends="struts-default">
-		<action name="*_*" class="com.BookStore.action.{1}" method="{2}">
+		<default-action-ref name="error"></default-action-ref>
+		<global-results>
+			<result name="error">
+
+			</result>
+		</global-results>
+		<action name="error" class="com.BookStore.action">
+
+		</action>
+		<action name="fanc*_*" class="com.BookStore.action.{1}" method="{2}">
 			<result name="success">
 				/jsp/{2}Success.jsp
 			</result>
 			<result name="input">
-				/jsp/{2}Input.jsp
+				/jsp/{2}.jsp
 			</result>
 		</action>
 	</package>

@@ -6,6 +6,7 @@ import oracle.net.aso.q;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import util.HibernateSessionFactory;
 
@@ -69,7 +70,14 @@ public class UserFunction extends ActionSupport {
 			return INPUT;
 		}
 	}
-
+	public String regist() {
+		Session session=HibernateSessionFactory.getSession();
+		Transaction tx=session.beginTransaction();
+		session.save(user);
+		tx.commit();
+		session.close();
+		return SUCCESS;
+	}
 	/**
 	 * 获取所有书籍方法
 	 * 

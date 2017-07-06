@@ -28,8 +28,7 @@
 		</div>
 		<div id="navbar">
 			<form method="get" name="search" action="servlet/doBookListServlet">
-				搜索：<input class="input-text" type="text" name="bookName"
-					value='' /><input
+				搜索：<input class="input-text" type="text" name="bookName" value='' /><input
 					class="input-btn" type="submit" name="submit" value='' />
 			</form>
 		</div>
@@ -44,13 +43,13 @@
 				<li class="unpass">2.注册成功</li>
 			</ul>
 		</div>
-		<form action="servlet/doRegisterServlet" method="post"
+		<form action="fancUserFunction_regist.action" method="post"
 			onsubmit="return checkAll();">
 			<dl>
 				<dt>用 户 名：</dt>
 				<dd>
 					<input class="input-text" type="text" value="请输入用户名"
-						name="userName" id="userNameId" onfocus="change();"
+						name="user.userName" id="userNameId" onfocus="change();"
 						onblur="checkName();" onfocus="msgDispear('f_userNameMsg')" />
 					<p id="userNameMsg">
 						<font color="red" id="f_userNameMsg"> <%
@@ -64,7 +63,7 @@
 
 				<dt>密 码：</dt>
 				<dd>
-					<input class="input-text" type="password" name="password"
+					<input class="input-text" type="password" name="user.password"
 						id="passWordId" onblur="checkPassWord();"
 						onfocus="msgDispear('passWordMsg')" />
 					<p id="passWordMsg"></p>
@@ -80,11 +79,11 @@
 
 				<dt>Email地址：</dt>
 				<dd>
-					<input class="input-text" type="text" name="email" id="emailId"
-						onblur="checkemail();" onfocus="msgDispear('emailMsg')" />
+					<input class="input-text" type="text" name="user.email"
+						id="emailId" onblur="checkemail();"
+						onfocus="msgDispear('emailMsg')" />
 					<p id="emailMsg"></p>
 				</dd>
-
 				<dt>用户协议：</dt>
 				<dd>
 					<label for="textarea"></label>

@@ -6,17 +6,11 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="dialect">
-			org.hibernate.dialect.Oracle9Dialect
-		</property>
-		<property name="connection.url">
-			jdbc:oracle:thin:@localhost:1521:HUAYU
-		</property>
+		<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:HUAYU</property>
 		<property name="connection.username">news</property>
 		<property name="connection.password">news</property>
-		<property name="connection.driver_class">
-			oracle.jdbc.driver.OracleDriver
-		</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
@@ -28,7 +22,7 @@
 		</property>
 		<!-- 开启查询缓存 -->
 		<property name="hibernate.cache.use_query_cache">true</property>
-		<property name="myeclipse.connection.profile">JDBC</property>
+		<property name="myeclipse.connection.profile">news</property>
 		<mapping resource="com/BookStore/entity/OrderInfo.hbm.xml" />
 		<mapping resource="com/BookStore/entity/OrderDetail.hbm.xml" />
 		<mapping resource="com/BookStore/entity/UserInfo.hbm.xml" />

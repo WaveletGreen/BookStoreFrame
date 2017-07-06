@@ -1,10 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -21,6 +20,8 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" type="text/css" href="css/user.css">
+<script type="text/javascript" src="js/jQuery/jquery-3.2.1.slim.js"></script>
 <script type="text/javascript" src="js/ck_login.js"></script>
 </head>
 
@@ -39,27 +40,28 @@
 	</div>
 	<div id="login">
 		<h2>用户登陆</h2>
-		<form method="post" action="UserFunction_login.action">
+		<form method="post" action="fancUserFunction_regist.action"
+			id="loginForm">
 			<dl>
 				<dt>用户名：</dt>
 				<dd>
 					<input class="input-text" type="text" name="user.userName"
-						id="loginNameId" onfocus="change();" />
+						id="loginNameId" onfocus="change();" /><span id="spUserName"
+						class="removeLoginRemind">请输入用户名</span>
 				<dt>密 码：</dt>
 				<dd>
 					<input class="input-text" type="password" name="user.password"
-						id="loginPassword" onfocus="change();" />
+						id="loginPassword" onfocus="change();" /><span id="spPassword"
+						class="removeLoginRemind">请输入密码</span>
 				<dt></dt>
 				<dd class="button">
 					<input class="input-btn" type="submit" name="submit" value="" /> <input
 						class="input-reg" type="button" name="register" value=""
-						onclick="window.location='/bookStore/jsp/register.jsp';" />
+						onclick="window.location='/BookStoreFrame/jsp/register.jsp';" />
 				</dd>
 			</dl>
-			<div align="center"
-				<c:if test="${not empty requestScope.msg}">style="border: 1px red solid"</c:if>>
-				<font color="red"> <c:if test="${not empty requestScope.msg}">${requestScope.msg}</c:if>
-				</font>
+			<div id="errorMsg">
+				<s:fielderror value="errorMsg" />
 			</div>
 		</form>
 	</div>
