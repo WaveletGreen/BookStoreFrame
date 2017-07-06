@@ -23,6 +23,15 @@ public class UserFunction extends ActionSupport {
 	private List<BookInfo> bookLists;
 	private String errorMsg;
 	private Page page;
+	private String searchBookName;
+
+	public String getSearchBookName() {
+		return searchBookName;
+	}
+
+	public void setSearchBookName(String searchBookName) {
+		this.searchBookName = searchBookName;
+	}
 
 	public UserInfo getRegUser() {
 		return regUser;
@@ -91,7 +100,7 @@ public class UserFunction extends ActionSupport {
 	}
 
 	/**
-	 * 获取所有书籍方法
+	 * 获取所有书籍方法,测试用
 	 * 
 	 * @return
 	 */
@@ -104,7 +113,10 @@ public class UserFunction extends ActionSupport {
 	}
 
 	public String search() {
-		getBooksByPage(null, page.getPageIndex(), 5);
+		if(page==null){
+			page=new Page();
+		}
+		getBooksByPage(searchBookName, page.getPageIndex(), 5);
 		return "toIndex";
 	}
 

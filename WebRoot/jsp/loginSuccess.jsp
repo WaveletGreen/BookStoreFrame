@@ -40,16 +40,18 @@
 		<div id="navbar">
 			<div class="userMenu">
 				<ul>
-					<li class="current"><a href="servlet/doBookListServlet">首页</a>
+					<li class="current"><a href="fancUserFunction_search.action">首页</a>
 					</li>
 					<li><a href="servlet/orderServlet">我的订单</a></li>
 					<li><a href="servlet/shoppingCartServlet">购物车</a></li>
 					<li><a href="servlet/logoutServlet">注销</a></li>
 				</ul>
 			</div>
-			<form method="get" name="search" action="UserFunction_getBooksByPage">
-				搜索：<input class="input-text" type="text" name="bookName" value='' /><input
-					class="input-btn" type="submit" name="submit" value='' />
+			<form method="get" name="search"
+				action="fancUserFunction_search.action">
+				搜索：<input class="input-text" type="text" name="searchBookName"
+					value='' /><input class="input-btn" type="submit" name="submit"
+					value='' />
 			</form>
 		</div>
 	</div>
