@@ -57,7 +57,8 @@
 					<li class="current"><a href="fancUserFunction_search.action">首页</a>
 					</li>
 					<li><a href="servlet/orderServlet">我的订单</a></li>
-					<li><a href="servlet/shoppingCartServlet">购物车</a></li>
+					<li><a
+						href='fancOrderFunction_getUserCart.action?user.userName=<s:property value="user.userName"/>'>购物车</a></li>
 					<li><a href="globalGlobal_logout">注销</a></li>
 				</ul>
 			</div>
@@ -122,7 +123,9 @@
 				<div class="button">
 					<input class="input-btn" type="submit" name="submit" value="" />
 				</div>
-				<input type="hidden" name="user.userName" value="<s:property value="user.userName"/>" />
+				<input type="hidden" name="user.userName"
+					value="<s:property value="user.userName"/>" /> <input
+					type="hidden" value="1" name="buyNum" />
 			</form>
 		</div>
 	</div>
