@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
@@ -80,6 +81,14 @@
 							<th class="nums">数量</th>
 							<th class="price">价格&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
+						<s:iterator value="cart" var="cr" status="status">
+							<tr <s:if test="#status%2==0">class="odd"</s:if>>
+								<td class="thumb"><img src='<s:property value="#cr.bookPhoto" />'/></td>
+								<td><s:property value="#cr.bookName" /></td>
+								<td class="title"><s:property value="#cr.number" /></td>
+								<td class="thumb"><s:property value="#cr.price" /></td>
+							</tr>
+						</s:iterator>
 						<c:forEach items="${sessionScope.shoppingCart}" var="item"
 							varStatus="status">
 							<c:set var="book" value="${item.key}" scope="page"></c:set>
@@ -91,13 +100,11 @@
 										<input type="button" name="button" value=" &ndash; "
 											id="butSub${book.book_id}"
 											onclick="chageAmount(${book.book_id},-1)" />
-									</c:if>
-									<c:if test="${item.value ==0 }">
+									</c:if> <c:if test="${item.value ==0 }">
 										<input type="hidden" name="button" value=" &ndash; "
 											id="butSub${book.book_id}"
 											onclick="chageAmount(${book.book_id},-1)" />
-									</c:if>
-									<input class="input-text" id="${book.book_id }" type="text"
+									</c:if> <input class="input-text" id="${book.book_id }" type="text"
 									name="nums" value="${item.value }"
 									onfocus="getValidate(${book.book_id })"
 									onblur="setValidate(${book.book_id })" /> <input type="button"
